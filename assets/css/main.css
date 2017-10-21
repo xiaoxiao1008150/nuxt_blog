@@ -1,0 +1,149 @@
+html, body
+{
+  background-color: #fff;
+  color: #000;
+  letter-spacing: 0.5px;
+  font-family: "Helvetica, Arial, sans-serif";
+  font-size: 14px;
+  margin: 0;
+  height:100%;
+}
+body{
+  background:#f4f9fe;
+  padding-bottom:40px;  
+}
+h1,h2,h3,h4,p{
+  margin:0;
+}
+a {
+  text-decoration: none;
+}
+a:hover, a:focus
+{
+  color:#8e8989;
+}
+.logo {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  max-height: 289px;
+}
+
+.clearfix:after{
+  content:'';
+  display: block;
+  clear:both;
+  visibility: hidden; 
+  height:0;
+}
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+
+div{
+box-sizing:border-box;
+-moz-box-sizing:border-box; /* Firefox */
+-webkit-box-sizing:border-box; /* Safari */
+}
+ul {
+  list-style: none;
+  margin:0;
+  padding: 0;
+}
+/*媒体查询*/
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) { 
+  .c_container,.nav_container{
+    width:700px;
+    margin:20px auto;
+  }
+  .c_left{
+    width:450px;
+    float: left;
+  }
+  .c_right{
+    width: 200px;
+    float:right;
+  }
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width:1000px) { 
+  .c_container, .nav_container{
+    width:960px;
+    margin:20px auto;
+  }
+  .c_left{
+    width:660px;
+    float: left;
+  }
+  .c_right{
+    width: 270px;
+    float:right;
+  }
+  .p_right{
+    width:800px;
+    float:right;
+  }
+  .p_left{
+    width:120px;
+    float:left;
+  }
+}
+
+.p_left{
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid rgb(238, 238, 238);
+  -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 1px rgba(0,0,0,.18);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 1px rgba(0,0,0,.18);
+}
+.p_right h3{
+  font-size: 20px;
+  /*color:#66a3d3;*/
+}
+.p_right{
+  color:#678197;
+}
+.submit_button{
+  border: none;
+  color: #fff;
+  padding: 8px 23px;
+  border-radius: 6px;
+  font-size: 12px;
+  background: rgba(27, 161, 226, 0.6);
+  margin-top:25px;
+}
+.admin_input{
+  border: 1px solid #ccc;
+  width:50%;
+  height: 32px;
+  padding: 3px 8px;
+  display: inline-block;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.admin_title{
+  margin:15px 0 10px 5px;
+}
+.c_article{
+  position: relative;
+  margin-bottom: 25px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 1px rgba(0,0,0,.18);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 1px rgba(0,0,0,.18);
+}
+.v_field{
+  display: inline-block;
+  height:32px;
+  line-height: 32px;
+  margin-left: 20px;
+  color:red;
+  font-size: 12px;
+}
