@@ -5,24 +5,30 @@
   "author": "Cui <cuixiao@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "backpack dev",
-    "build": "nuxt build && backpack build",
-    "start": "cross-env NODE_ENV=production node build/main.js",
+    "dev": "node server.js",
+    "build": "nuxt build",
+    "start": "NODE_ENV=production node server.js",
     "precommit": "npm run lint",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.18.2",
+    "connect-mongo": "^2.0.0",
+    "crc": "^3.5.0",
     "cross-env": "^5.0.1",
     "element-ui": "^1.4.7",
     "express": "^4.15.3",
+    "express-session": "^1.15.6",
     "mini-toastr": "^0.6.6",
     "mongoose": "^4.12.2",
-    "nuxt": "^1.0.0-rc3",
+    "nuxt": "^1.0.0-rc10",
+    "simplemde": "^1.11.2",
     "source-map-support": "^0.4.15",
+    "uid-safe": "^2.1.5",
     "vue-notifications": "^0.9.0",
-    "vue-quill-editor": "^2.3.3"
+    "vue-quill-editor": "^2.3.3",
+    "vue-simplemde": "^0.4.6"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

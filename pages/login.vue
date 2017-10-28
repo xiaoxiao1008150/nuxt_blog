@@ -1,18 +1,53 @@
 <template>
   <div class="c_container clearfix">
-    <form class="login">
+    <form class="login" @submit.prevent="login($event)">
       <h3>登录</h3>
       <div class="form_control">
         <label for="username">用户名</label>
-        <input id="username" type="text" name="username">
+        <input id="username" type="text" name="username" v-model.trim="formUsername">
       </div>
       <div class="form_control">
         <label for="password">密码</label>
-        <input id="password" type="text" name="password">
+        <input id="password" type="text" name="password" v-model.trim="formPassword">
       </div>
+       <button id="login_btn" class="submit_button">登录</button>
     </form>
   </div>
 </template>
+<script>
+export default {
+  fetch ({ store, redirect }) {
+    if (store.state.authUser) {
+      return redirect('/admin')
+    }
+  },
+  data () {
+    return {
+      formUsername: '',
+      formPassword: ''
+    }
+  },
+  methods: {
+    async login () {
+      try {
+        await this.$store.dispatch('login', {
+          username: this.formUsername,
+          password: this.formPassword
+        })
+        let name = this.$store.state.authUser.username
+        if (name && name === 'admin') {
+          this.$nuxt.$router.push({path: '/admin'})
+          this.formUsername = ''
+          this.formPassword = ''
+        }
+        // console.log('test===', this.$store.state.authUser.username)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  }
+}
+</script>
 <style>
 .login{
   width:60%;

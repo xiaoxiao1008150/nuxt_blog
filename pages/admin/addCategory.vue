@@ -47,9 +47,10 @@
         let params = {
           name: this.name
         }
+        // axios.post('/api/add-category', params)
         _addCategory(params)
           .then((res) => {
-            console.log('hh===', res)
+            // console.log('hh===', res)
             if (res.status === 1) {
               this.showAlert = true
               this.message = res.msg
@@ -59,11 +60,15 @@
             }
           })
           .catch((error) => {
-            console.log('error==', error)
+            // console.log('error==', error)
             this.showAlert = true
             this.type = 'error'
-            this.message = '请稍后重新尝试'
-            console.log(error)
+            if (error.code === 1000) {
+              this.message = '请稍后重新尝试'
+            }
+            if (error.code === 100) {
+              this.message = '请求超时'
+            }
             setTimeout(() => {
               this.showAlert = false
             }, 1500)

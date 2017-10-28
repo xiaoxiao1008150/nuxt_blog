@@ -1,38 +1,37 @@
 <template>
-<div class="c_container">
-  <div class="clearfix">
-    <div class="c_left">
-      <article class="c_article" v-for="post in posts">
-        <header class="c_header">
-           <h1>
-              <i class="iconfont">&#xe6f3;</i>
-              <a href="/post/detail">{{ post.title }}</a>
-          </h1>
-           <p class="c_time"><span>{{ post.created | formatDate("yyyy-MM-dd")  }}</span></p>
-        </header>
-        <div class="c-thumbnail">
-           <img src="~assets/img/default.png">
-        </div>
-        <div class="c_content">
-           <p class="text">{{ post.content }}</p>
-        </div>
-        <footer class="c_footer">
-          <i class="iconfont">&#xe6f8;</i>
-          <span class="post">全文</span>
-          <div class="right">
-            <span class="categories">分类</span>
-            <span class="tags">{{ post.category.name }}</span> 
+<div>
+  <div class="c_container">
+    <div class="clearfix">
+      <div class="c_left">
+        <article class="c_article" v-for="post in posts">
+          <header class="c_header">
+             <h1>
+                <i class="iconfont">&#xe6f3;</i>
+                <nuxt-link :to=" '/post/' + post._id + '?' " >{{ post.title }}</nuxt-link>
+            </h1>
+             <p class="c_time"><span>{{ post.created | formatDate("yyyy-MM-dd")  }}</span></p>
+          </header>
+          <div class="c_content">
+             <div class="text" v-html="post.content"></div>
           </div>
-        </footer>
-      </article>
-    </div>
-    <div class="c_right">
-      <widget :postList="posts"></widget>
+          <footer class="c_footer">
+            <i class="iconfont">&#xe6f8;</i>
+            <!-- <span class="post" >全文</span> -->
+            <nuxt-link class="post" :to=" '/post/' + post._id + '?' ">全文</nuxt-link>
+            <div class="right">
+              <span class="categories">分类</span>
+              <span class="tags">{{ post.category.name }}</span> 
+            </div>
+          </footer>
+        </article>
+        <pagination :totalPage="totalPage" @pageChange="handleCurrentChange" :page="page" :pageSize="pageSize"></pagination>
+      </div>
+      <div class="c_right">
+        <widget :postList="posts"></widget>
+      </div>
     </div>
   </div>
-  <pagination :postList="posts"></pagination>
 </div>
-
 </template>
 
 <script>
@@ -40,22 +39,13 @@ import { _getAllPosts } from '~/util/post'
 import Pagination from '~/components/Pagination'
 import Widget from '~/components/Widget'
 export default {
-  // async asyncData () {
-  //   let { data } = await axios.get('/api/users')
-  //   return { users: data }
-  // },
-  // asyncData ({ params, error }) {
-  //   return axios.get('/api/posts')
-  //     .then((res) => {
-  //       return { posts: res.data.posts }
-  //     })
-  //     .catch((e) => {
-  //       error({ statusCode: 404, message: 'Post not found' })
-  //     })
-  // },
   data () {
     return {
-      posts: []
+      posts: [],
+      pageSize: 3,
+      page: 1,
+      totalPage: 0,
+      pass: true
     }
   },
   head () {
@@ -64,20 +54,39 @@ export default {
     }
   },
   methods: {
-    _getPostList () {
-      _getAllPosts()
+    handleCurrentChange (val) {
+      // console.log('this.page==,qian', this.page)
+      this.page = val
+      // this.$nuxt.$router.replace({query: {page: this.page}}) // 其中val是当前的页数。
+      this.$nuxt.$router.push({path: this.$nuxt.$route.path, query: { page: this.page }})
+    },
+    getPostList () {
+      let query
+      if (this.$nuxt.$route.query.page) {
+        this.page = parseInt(this.$nuxt.$route.query.page)
+        query = `page=${this.$nuxt.$route.query.page}&pageSize=${this.pageSize}`
+      } else {
+        query = `page=${this.page}&pageSize=${this.pageSize}`
+      }
+      _getAllPosts(query)
         .then((res) => {
           if (res.status === 1) {
             this.posts = res.posts
+            this.totalPage = res.totalPage
           }
         })
         .catch((e) => {
-          console.log('kk')
+          // console.log('kk')
         })
     }
   },
+  watch: {
+    // 监听路由变化，随时获取新的列表信息
+    '$nuxt.$route.query': 'getPostList'
+  },
   created () {
-    this._getPostList()
+    this.getPostList()
+    // console.log('test==', this.$nuxt.$route.params.tag)
   },
   components: {
     Pagination,
@@ -87,13 +96,6 @@ export default {
 </script>
 
 <style scoped>
-.c-thumbnail{
-  height:347px;
-}
-.c-thumbnail img{
-  width:100%;
-  height:100%;
-}
 .c_header{
   /*padding-left: 25px;*/
 }
@@ -124,7 +126,7 @@ export default {
   color:#ed4120;
 }
 .c_content{
-   padding: 25px 25px 0 25px;
+   padding: 0 25px 0 25px;
 }
 .text{
   color:rgb(68, 68, 68);
@@ -135,7 +137,7 @@ export default {
   margin-top: 15px;
   padding: 0 25px 15px 25px;
 }
-.c_footer span,
+.c_footer a,
 .c_footer > i{
   color:#999999;
   vertical-align: middle;
@@ -144,6 +146,9 @@ export default {
 } 
 .c_footer > i{
   font-weight:900;
+}
+.c_footer a:hover{
+  color: #3ba5e3;
 }
 .categories{
   margin-right: 8px;

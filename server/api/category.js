@@ -42,6 +42,7 @@ router.post('/add-category', function(req, res, next){
         status: 1,
         msg: '添加分类成功'
       });
+      // res.sendStatus(200);
     }
   });
 });

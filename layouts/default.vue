@@ -1,7 +1,9 @@
 <template>
   <div id="exp_wrapper">
     <my-header/>
-    <nuxt/>
+    <!-- <keep-alive> -->
+      <nuxt/>
+    <!-- </keep-alive> -->
   </div>
 </template>
 

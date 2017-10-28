@@ -1,15 +1,18 @@
 <template>
 <div class="c_container clearfix">
   <div class="c_left">
-    <div class="main">
+    <div class="main" v-for="(item, key) in posts">
       <div class="m_year">
         <i class="iconfont">&#xe6f4;</i>
-        <span>2017年</span>
+        <span>{{ key }}</span>
       </div>
       <ul class="m_title">
-        <li><time class="m_time">9-25</time><span>fsfsfsfssssssssssss</span></li>
-        <li><time class="m_time">9-24</time><span>哈哈fsfs哈</span></li>
-        <li><time class="m_time">9-23</time><span>哈fs哈哈</span></li>
+        <li v-for="(post, index) in item" :key="index" >
+        <nuxt-link :to=" '/post/' + post._id + '?' " >
+          <time class="m_time">{{ post.created | formatDate("yyyy-MM-dd") }}</time>
+          <span>{{ post.title }}</span>
+        </nuxt-link>
+        </li>
       </ul>
     </div>
   </div>
@@ -19,8 +22,20 @@
 </div>
 </template>
 <script>
+import { _getAllPosts } from '~/util/post'
 import Widget from '~/components/Widget'
+
 export default {
+  asyncData ({ error }) {
+    let query = 'year=all'
+    return _getAllPosts(query)
+      .then((res) => {
+        return { posts: res.posts }
+      })
+      .catch((e) => {
+        error({ statusCode: 404, message: 'Post not found' })
+      })
+  },
   head () {
     return {
       title: '文章列表'
@@ -31,41 +46,3 @@ export default {
   }
 }
 </script>
-<style>
-.main{
-  padding:10px 10px 10px 50px;
-  color:rgb(102, 102, 102);
-  background:#fff;
-  border-radius: 10px;
-  border: 1px solid rgb(238, 238, 238);
-  -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 1px rgba(0,0,0,.18);
-  box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 1px rgba(0,0,0,.18);
-}
-.m_year{
-  height:50px;
-  line-height: 50px;
-  font-weight:900;
-}
-.m_year span,
-.m_year i{
-  font-size: 20px;
-  color:rgb(82, 156, 229);
-}
-.m_year i{
-  margin-right:5px;
-}
-.m_title li{
-  height: 35px;
-  line-height:35px;
-  /*font-size: 14px;*/
-  /*color:rgb(82, 156, 229);*/
-  color:rgb(102, 102, 102);
-}
-.m_title li:hover{
-  cursor: pointer;
-  color:#1ba1e2;
-}
-.m_time{
-  margin-right: 15px;
-}
-</style>

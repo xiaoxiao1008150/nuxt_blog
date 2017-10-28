@@ -3,7 +3,7 @@ html, body
   background-color: #fff;
   color: #000;
   letter-spacing: 0.5px;
-  font-family: "Helvetica, Arial, sans-serif";
+  font-family: "'Helvetica Neue', Helvetica, Arial, sans-serif";
   font-size: 14px;
   margin: 0;
   height:100%;
@@ -146,4 +146,42 @@ ul {
   margin-left: 20px;
   color:red;
   font-size: 12px;
+}
+/*// posts _tag页面*/
+.main{
+  padding:10px 10px 10px 50px;
+  color:rgb(102, 102, 102);
+  background:#fff;
+  border-radius: 10px;
+  border: 1px solid rgb(238, 238, 238);
+  -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 1px rgba(0,0,0,.18);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1), 0 2px 4px 1px rgba(0,0,0,.18);
+}
+.m_year{
+  height:50px;
+  line-height: 50px;
+  font-weight:900;
+}
+.m_year span,
+.m_year i{
+  font-size: 20px;
+  color:rgb(82, 156, 229);
+}
+.m_year i{
+  margin-right:5px;
+}
+.m_title li{
+  height: 35px;
+  line-height:35px;
+  color:rgb(102, 102, 102);
+}
+.m_title a {
+  color:rgb(102, 102, 102);
+}
+.m_title a:hover{
+  cursor: pointer;
+  color:#1ba1e2;
+}
+.m_time{
+  margin-right: 15px;
 }

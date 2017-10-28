@@ -1,6 +1,8 @@
 import express from 'express'
 import { Nuxt, Builder } from 'nuxt'
 import bodyParser from 'body-parser'
+import session from 'express-session'
+const MongoStore = require('connect-mongo')(session); // session连接mongoose
 // const mongoose = require('mongoose')
 import mongoose from 'mongoose'
 import api from './api'
@@ -25,6 +27,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
       extended: true
 }));
+// Sessions 来创建 req.session
+app.use(session({
+  secret: 'super-secret-key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 60000 * 60 * 24 }, // 一天
+  store: new MongoStore({mongooseConnection: db.connection})
+}))
 
 // Import API Routes
 app.use('/api', api)

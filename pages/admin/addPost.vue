@@ -6,7 +6,7 @@
     <div class="p_right">
       <h3>添加文章</h3>
       <form class="add_post" @submit.prevent="addPost($event)">
-        <input class="admin_input" type="text" name="id"  v-model.trim="id">
+        <input style="display:none" class="admin_input" type="text" name="id"  v-model.trim="id">
         <div class="form_control">
           <p class="admin_title">标题</p>
           <input class="admin_input" type="text" name="title" placeholder="请输入标题..." v-model.trim="title">
@@ -47,6 +47,7 @@
 </template>
 <script>
   import AdminBar from '~/components/AdminBar'
+  // import Markdown from '~/components/Markdown'
   import Editor from '~/components/Editor'
   import Alert from '~/components/Alert'
   // import axios from '~/plugins/axios'
@@ -57,6 +58,7 @@
     asyncData ({ error }) {
       return _getAllCategories()
         .then((res) => {
+          // console.log('testss==', res)
           return { categories: res.categories }
         })
         .catch((e) => {
@@ -89,10 +91,11 @@
           .then((res) => {
             if (res.status === 1) {
               let post = res.post
-              console.log('hh==', post)
+              let tag = (post.tag).join(' ')
+              // console.log('hh==', post)
               this.title = post.title
               this.brief = post.brief
-              this.tag = post.tag
+              this.tag = tag
               this.category = post.category.name
               this.content = post.content
             }
@@ -114,11 +117,15 @@
           e.preventDefault()
           return false
         }
+        // 处理 tag 标签 字符串转化为数组
+        let tag = (this.tag).split(' ')
+        // console.log('this.tag==', this.tag)
+        // console.log('tag==', tag)
         let params = {
           id: this.id,
           title: this.title,
           brief: this.brief,
-          tag: this.tag,
+          tag: tag,
           category: this.category,
           content: this.content
         }
@@ -168,6 +175,7 @@
     },
     components: {
       AdminBar,
+      // Markdown,
       Editor,
       Alert
     }

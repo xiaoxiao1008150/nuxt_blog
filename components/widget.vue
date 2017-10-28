@@ -3,7 +3,7 @@
      <div class="widget tagcloud" v-show="postList.length">
       <h3 class="widget-title">标签</h3>
       <div class="widget-content">
-        <a href="" v-for="(post,index) in postList" :key="index">{{ post.tag }}</a>
+        <nuxt-link :to=" '/tag/' + tag + '?' " v-for="(tag,index) in tagList" :key="index">{{ tag }}</nuxt-link>
       </div>
     </div>
     <div class="widget" v-show="recentPosts.length">
@@ -11,7 +11,7 @@
       <div class="widget-content">
         <ul class="post-list">
           <li class="post-list-item" v-for="(post, index) in recentPosts" :key="index">
-            <a href="">{{ post.title }}</a>
+            <nuxt-link :to=" '/post/' + post._id + '?' ">{{ post.title }}</nuxt-link>
           </li>
         </ul>
       </div>
@@ -23,12 +23,25 @@
     props: {
       postList: {
         type: Array,
-        default: []
+        default () {
+          return []
+        }
       }
     },
     computed: {
       recentPosts () {
         return this.postList.length <= 10 ? this.postList : this.postList.slice(0, 10)
+      },
+      tagList () {
+        let arr = []
+        this.postList.forEach((item) => {
+          item.tag.forEach((tag) => {
+            if (!arr.includes(tag)) {
+              arr.push(tag)
+            }
+          })
+        })
+        return arr
       }
     }
   }
@@ -63,5 +76,8 @@
 .widget-content {
   font-size: 13px;
   padding: 15px 20px;
+}
+.post-list-item{
+  line-height: 25px;
 }
 </style>

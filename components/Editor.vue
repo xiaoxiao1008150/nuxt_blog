@@ -1,7 +1,6 @@
 <template>
   <section class="container">
     <div class="quill-editor" 
-          v-model="content"
          @change="onEditorChange($event)"
          v-quill:myQuillEditor="editorOption">
     </div>
@@ -12,7 +11,7 @@
 export default {
   data () {
     return {
-      content: '<p>I am Example</p>',
+      // placeholder: '请编辑内容...',
       editorOption: {
         // some quill options
         modules: {
@@ -24,7 +23,8 @@ export default {
             [{ 'font': [] }],
             [{ 'align': [] }],
             ['link', 'image'],
-            ['clean']
+            ['clean'],
+            ['omega']
           ]
         }
       }
@@ -32,9 +32,9 @@ export default {
   },
   mounted () {
     // console.log('app init, my quill insrance object is:', this.myQuillEditor)
-    setTimeout(() => {
-      this.content = 'i am changed'
-    }, 3000)
+    // setTimeout(() => {
+    //   this.content = 'i am changed'
+    // }, 3000)
   },
   methods: {
     // onEditorBlur (editor) {
@@ -57,10 +57,17 @@ export default {
 </script>
 
 <style scoped>
+.container{
+  width:80%;
+  /*height:250px;*/
+}
 .quill-editor {
   min-height: 300px;
   max-height: 400px;
   overflow-y: auto;
   background: #FFF;
+}
+.ql-omega:after {
+  content: "Ω" !important;
 }
 </style>
