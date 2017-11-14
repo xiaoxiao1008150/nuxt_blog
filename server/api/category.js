@@ -2,7 +2,7 @@ import { Router } from 'express';
 const router = Router();
 const mongoose = require('mongoose');
 const Post = require('../models/post');
-const Category = require('../models/Category');
+const Category = require('../models/category');
 
 // 获取全部分类
 router.get('/categories', function(req, res, next){

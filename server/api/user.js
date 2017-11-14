@@ -2,8 +2,8 @@ import { Router } from 'express';
 const router = Router();
 const mongoose = require('mongoose');
 const Post = require('../models/post');
-const Category = require('../models/Category');
-const User = require('../models/User');
+const Category = require('../models/category');
+const User = require('../models/user');
 
 // 管理用户登录
 router.post('/user/login', (req, res) => {

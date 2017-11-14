@@ -2,8 +2,8 @@ import { Router } from 'express';
 const router = Router();
 const mongoose = require('mongoose');
 const Post = require('../models/post');
-const Category = require('../models/Category');
-const Comment = require('../models/Comment');
+const Category = require('../models/category');
+const Comment = require('../models/comment');
 
 // 获取 一篇文章的所有评论
 router.get('/get-comment/:id', function(req, res, next){
