@@ -1,0 +1,39 @@
+{
+  "apps": [
+    {
+      "name": "blog",
+      "script": "server.js",
+      "env": {
+        "COMMON_VARIABLE": "true"
+      },
+      "env_production" : {
+        "NODE_ENV": "production"
+      }
+    }
+  ],
+  "deploy" : {
+    "production": {
+      "user" : "root",
+      "host" : ["47.104.98.140"],
+      "port" : "39999",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:xiaoxiao1008150/nuxt_blog.git",
+      "path" : "/www/blog/prouciton",
+      "ssh_options" : "StrictHostKeyChecking=no",
+      "post-deploy" : "yarn install && npm run build  && npm start && pm2 startOrRestart ecosystem.json --env production",
+      "env"  : {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+

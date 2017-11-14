@@ -6,13 +6,19 @@ const MongoStore = require('connect-mongo')(session); // session连接mongoose
 // const mongoose = require('mongoose')
 import mongoose from 'mongoose'
 import api from './api'
+const env = process.env.NODE_ENV || 'development'
 
 const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
+let dbUrl = "mongodb://47.104.98.140:27017/nuxt_blog"
+if (env === "development") {
+  dbUrl = "mongodb://localhost:27017/nuxt_blog"
+}
 // 数据库设置
-const db = mongoose.connect("mongodb://localhost:27017/nuxt_blog");
+const db = mongoose.connect(dbUrl);
+// const db = mongoose.connect("mongodb://localhost:27017/nuxt_blog");
 // 数据库连接
 db.connection.on("error", function(error) {
   console.log("数据库连接失败：" + error);
