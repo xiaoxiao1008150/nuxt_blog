@@ -2,9 +2,9 @@ import { Router } from 'express';
 const router = Router();
 const mongoose = require('mongoose');
 const Post = require('../models/post');
-const Category = require('../models/Category');
+const Category = require('../models/category');
 
-// 获取全部文章
+// 获取全部文c
 router.get('/posts', function(req, res, next){
     let sortby = req.query.sortby ? req.query.sortby : 'created';
     let sortdir = req.query.sortdir ? parseInt(req.query.sortdir) : -1; // -1是降序
