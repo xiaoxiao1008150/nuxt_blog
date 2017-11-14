@@ -23,7 +23,7 @@
 </template>
 <script>
 import { _getAllPosts } from '~/util/post'
-import Widget from '~/components/Widget'
+import Side from '~/components/Side'
 
 export default {
   asyncData ({ error }) {
@@ -42,7 +42,7 @@ export default {
     }
   },
   components: {
-    Widget
+    Side
   }
 }
 </script>

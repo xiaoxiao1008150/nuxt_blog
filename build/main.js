@@ -271,7 +271,7 @@ var mongoose = __webpack_require__(0);
 var Post = __webpack_require__(2);
 var Category = __webpack_require__(3);
 
-// 获取全部文章
+// 获取全部文c
 router.get('/posts', function (req, res, next) {
   var sortby = req.query.sortby ? req.query.sortby : 'created';
   var sortdir = req.query.sortdir ? parseInt(req.query.sortdir) : -1; // -1是降序

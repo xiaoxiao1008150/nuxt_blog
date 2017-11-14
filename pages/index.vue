@@ -37,7 +37,7 @@
 <script>
 import { _getAllPosts } from '~/util/post'
 import Pagination from '~/components/Pagination'
-import Widget from '~/components/Widget'
+import Side from '~/components/Side'
 export default {
   data () {
     return {
@@ -90,7 +90,7 @@ export default {
   },
   components: {
     Pagination,
-    Widget
+    Side
   }
 }
 </script>

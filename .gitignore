@@ -6,3 +6,9 @@ npm-debug.log
 
 # Nuxt generate
 dist
+
+#Backpack build
+build
+
+# Nuxt build
+.nuxt

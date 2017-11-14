@@ -39,7 +39,7 @@
 </div>
 </template>
 <script>
-import Widget from '~/components/Widget'
+import Side from '~/components/Side'
 import Comment from '~/components/Comment'
 import { _postDetailById, _addVotes, _getAllPosts } from '~/util/post'
 import { _addUser, _getUser } from '~/util/user'
@@ -167,7 +167,7 @@ export default {
     // console.log('hh===', this.$nuxt.$route.params.detail)
   },
   components: {
-    Widget,
+    Side,
     Comment
   }
 }

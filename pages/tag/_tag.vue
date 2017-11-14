@@ -22,7 +22,7 @@
 </div>
 </template>
 <script>
-import Widget from '~/components/Widget'
+import Side from '~/components/Side'
 import { _getTagPosts } from '~/util/post'
 
 export default {
@@ -63,7 +63,7 @@ export default {
     this.getTagPosts(tag)
   },
   components: {
-    Widget
+    Side
   }
 }
 </script>
