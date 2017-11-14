@@ -128,6 +128,12 @@ export default {
 .c_content{
    padding: 0 25px 0 25px;
 }
+.c_content img {
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+    display: block;
+}
 .text{
   color:rgb(68, 68, 68);
   padding: 10px 0  15px 0;
