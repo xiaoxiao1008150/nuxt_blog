@@ -9,7 +9,7 @@ import api from './api'
 const env = process.env.NODE_ENV || 'development'
 
 const app = express()
-// const host = process.env.HOST || '127.0.0.1'
+const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 8081
 
 let dbUrl = "mongodb://47.104.98.140:27017/nuxt_blog"
@@ -62,5 +62,5 @@ if (config.dev) {
 app.use(nuxt.render)
 
 // Listen the server
-app.listen(port)
-console.log('Server listening on '  + ':' + port) // eslint-disable-line no-console
+app.listen(port, host)
+console.log('Server listening on ' + host + ':' + port) // eslint-disable-line no-console
