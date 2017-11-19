@@ -9,7 +9,7 @@ import api from './api'
 const env = process.env.NODE_ENV || 'development'
 
 const app = express()
-const host = process.env.HOST || '127.0.0.1'
+const host = process.env.HOST || '0.0.0.0'
 const port = process.env.PORT || 3000
 
 let dbUrl = "mongodb://47.104.98.140:27017/nuxt_blog"
