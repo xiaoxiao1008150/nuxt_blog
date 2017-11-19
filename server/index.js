@@ -10,7 +10,7 @@ const env = process.env.NODE_ENV || 'development'
 
 const app = express()
 const host = process.env.HOST || '127.0.0.1'
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 8081
 
 let dbUrl = "mongodb://47.104.98.140:27017/nuxt_blog"
 if (env === "development") {
