@@ -147,11 +147,11 @@ var MongoStore = __webpack_require__(8)(__WEBPACK_IMPORTED_MODULE_3_express_sess
 // const mongoose = require('mongoose')
 
 
-var env = "production" || 'development';
+var env = "development" || 'development';
 
 var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 var host = process.env.HOST || '127.0.0.1';
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 9000;
 
 var dbUrl = "mongodb://47.104.98.140:27017/nuxt_blog";
 if (env === "development") {
@@ -188,7 +188,7 @@ app.use('/api', __WEBPACK_IMPORTED_MODULE_5__api__["a" /* default */]);
 
 // Import and Set Nuxt.js options
 var config = __webpack_require__(17);
-config.dev = !("production" === 'production');
+config.dev = !("development" === 'production');
 
 // Init Nuxt.js
 var nuxt = new __WEBPACK_IMPORTED_MODULE_1_nuxt__["Nuxt"](config);
