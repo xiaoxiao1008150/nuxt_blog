@@ -150,8 +150,8 @@ var MongoStore = __webpack_require__(8)(__WEBPACK_IMPORTED_MODULE_3_express_sess
 var env = "development" || 'development';
 
 var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
-var host = process.env.HOST || '127.0.0.1';
-var port = process.env.PORT || 9000;
+var host = process.env.HOST || '47.104.98.140';
+var port = process.env.PORT || 3000;
 
 var dbUrl = "mongodb://47.104.98.140:27017/nuxt_blog";
 if (env === "development") {
