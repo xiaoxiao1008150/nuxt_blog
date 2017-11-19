@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "blog",
-      "script": "./server/index.js",
+      "script": "./build/main.js",
       "env": {
         "COMMON_VARIABLE": "true"
       },
