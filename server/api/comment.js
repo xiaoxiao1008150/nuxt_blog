@@ -12,7 +12,6 @@ router.get('/get-comment/:id', function(req, res, next){
       .populate('from', 'name')
       .populate('reply.to', 'name')
       .exec(function(err, comments){
-        console.log('comments', comments)
         if(err) {
           res.json({
 
@@ -30,9 +29,6 @@ router.get('/get-comment/:id', function(req, res, next){
 router.post('/add-comment', function(req, res, next){
   let { comment, post ,user, hasCommentId } = req.body;
   // flag 为true ,说明 是回复评论，不是发表评论
-  console.log('hhh===', hasCommentId);
-  console.log('内容===', comment);
-  // console.log('userid===', );
   if(hasCommentId){
     Comment.findById(hasCommentId)
       .populate('from', 'name')
@@ -47,7 +43,6 @@ router.post('/add-comment', function(req, res, next){
           if(err){
             console.log(err);
           }
-          console.log('replyC==', newdoc);
           res.json({
             status: 1,
             reply: true, 
@@ -83,8 +78,6 @@ router.post('/add-comment', function(req, res, next){
           msg: '评论添加成功'
         });
       }
-      console.log('newComment===', doc);
-      // res.redirect('/movie/' + movieId)
     })
   }
 });

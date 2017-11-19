@@ -150,7 +150,7 @@ var MongoStore = __webpack_require__(8)(__WEBPACK_IMPORTED_MODULE_3_express_sess
 var env = "development" || 'development';
 
 var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
-var host = process.env.HOST || '47.104.98.140';
+var host = process.env.HOST || 'localhost';
 var port = process.env.PORT || 3000;
 
 var dbUrl = "mongodb://47.104.98.140:27017/nuxt_blog";
@@ -345,10 +345,8 @@ router.get('/posts', function (req, res, next) {
             obj[item.year].push(item);
           } else {
             obj[item.year] = [];
-            console.log('obj', obj);
           }
         });
-        console.log('year==', obj);
         res.json({
           status: 1,
           posts: obj,
@@ -442,7 +440,6 @@ router.get('/posts/detail/:brief', function (req, res, next) {
 // 更新浏览次数
 router.get('/posts/detail_id/:id', function (req, res, next) {
   var id = req.params.id;
-  // console.log('test 浏览次数====', 'hh')
   Post.findOneAndUpdate({ "_id": id }, { $inc: { 'meta.ips': 1
     } }).populate('category').exec(function (err, hasPost) {
     if (err) {
@@ -804,7 +801,6 @@ var Comment = __webpack_require__(16);
 router.get('/get-comment/:id', function (req, res, next) {
   var id = req.params.id;
   Comment.find({ post: id }).populate('from', 'name').populate('reply.to', 'name').exec(function (err, comments) {
-    console.log('comments', comments);
     if (err) {
       res.json({});
     } else {
@@ -825,9 +821,6 @@ router.post('/add-comment', function (req, res, next) {
       hasCommentId = _req$body.hasCommentId;
   // flag 为true ,说明 是回复评论，不是发表评论
 
-  console.log('hhh===', hasCommentId);
-  console.log('内容===', comment);
-  // console.log('userid===', );
   if (hasCommentId) {
     Comment.findById(hasCommentId).populate('from', 'name').populate('reply.to', 'name').exec(function (err, doc) {
       var reply = {
@@ -839,7 +832,6 @@ router.post('/add-comment', function (req, res, next) {
         if (err) {
           console.log(err);
         }
-        console.log('replyC==', newdoc);
         res.json({
           status: 1,
           reply: true,
@@ -875,8 +867,6 @@ router.post('/add-comment', function (req, res, next) {
           msg: '评论添加成功'
         });
       }
-      console.log('newComment===', doc);
-      // res.redirect('/movie/' + movieId)
     });
   }
 });

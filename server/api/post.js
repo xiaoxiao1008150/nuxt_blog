@@ -80,10 +80,8 @@ router.get('/posts', function(req, res, next){
                       obj[item.year].push(item);
                     }else{
                       obj[item.year] = [];
-                      console.log('obj', obj)
                     }
                   });
-                  console.log('year==', obj);
                   res.json({
                     status: 1,
                     posts: obj,
@@ -184,7 +182,6 @@ router.get('/posts/detail/:brief', function(req, res, next){
 // 更新浏览次数
 router.get('/posts/detail_id/:id', function(req, res, next){
   let id = req.params.id;
-  // console.log('test 浏览次数====', 'hh')
   Post.findOneAndUpdate({ "_id":id }, {$inc :
             {'meta.ips' : 1
             }})
