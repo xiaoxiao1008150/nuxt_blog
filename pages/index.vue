@@ -12,7 +12,7 @@
              <p class="c_time"><span>{{ post.created | formatDate("yyyy-MM-dd")  }}</span></p>
           </header>
           <div class="c_content">
-             <div class="text" v-html="post.content"></div>
+             <div class="text" v-html="post.brief"></div>
           </div>
           <footer class="c_footer">
             <i class="iconfont">&#xe6f8;</i>
