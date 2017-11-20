@@ -3,10 +3,10 @@ import * as axios from 'axios'
 let options = {}
 // The server-side needs a full url to works
 if (process.server) {
-  options.baseURL = `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`
+  options.baseURL = 'http://47.104.98.140:3000'
 }else{
   options = {
-    baseURL: `http://${process.env.HOST || 'localhost'}:${process.env.PORT || 3000}`,
+    baseURL: 'http://47.104.98.140:3000',
     timeout: 5000,
     responseType: "json",
     validateStatus: function (status) {

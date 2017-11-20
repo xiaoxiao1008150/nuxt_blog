@@ -165,10 +165,10 @@ db.connection.on("error", function (error) {
   console.log("数据库连接失败：" + error);
 });
 db.connection.on("open", function () {
-  console.log("------数据库连接成功！------");
+  console.log("------数据库连接成功！------", dbUrl);
 });
 
-app.set('host', '127.0.0.1');
+app.set('host', '47.104.98.140');
 app.set('port', port);
 
 app.use(__WEBPACK_IMPORTED_MODULE_2_body_parser___default.a.json());
