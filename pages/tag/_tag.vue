@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="c_right">
-    <widget></widget>
+    <side></side>
   </div>
 </div>
 </template>
@@ -26,16 +26,6 @@ import Side from '~/components/Side'
 import { _getTagPosts } from '~/util/post'
 
 export default {
-  // asyncData ({ error, params }) {
-  //   return _getTagPosts(params.tag)
-  //     .then((res) => {
-  //       console.log('testss==', res)
-  //       return { posts: res.posts }
-  //     })
-  //     .catch((e) => {
-  //       error({ statusCode: 404, message: 'Post not found' })
-  //     })
-  // },
   head () {
     return {
       title: '文章列表'
@@ -50,7 +40,6 @@ export default {
     getTagPosts (tag) {
       _getTagPosts(tag)
         .then((res) => {
-          console.log('testss==', res)
           this.posts = res.posts
         })
         .catch((error) => {

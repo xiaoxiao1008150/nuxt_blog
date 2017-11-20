@@ -58,7 +58,6 @@
     asyncData ({ error }) {
       return _getAllCategories()
         .then((res) => {
-          // console.log('testss==', res)
           return { categories: res.categories }
         })
         .catch((e) => {
@@ -92,7 +91,6 @@
             if (res.status === 1) {
               let post = res.post
               let tag = (post.tag).join(' ')
-              // console.log('hh==', post)
               this.title = post.title
               this.brief = post.brief
               this.tag = tag
@@ -119,8 +117,6 @@
         }
         // 处理 tag 标签 字符串转化为数组
         let tag = (this.tag).split(' ')
-        // console.log('this.tag==', this.tag)
-        // console.log('tag==', tag)
         let params = {
           id: this.id,
           title: this.title,
@@ -129,7 +125,6 @@
           category: this.category,
           content: this.content
         }
-        // console.log('tst=', params)
         _addPost(params)
           .then((res) => {
             if (res.status === 1) {

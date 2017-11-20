@@ -59,7 +59,7 @@
         console.log('params', params)
         _updatePassword(params)
           .then((res) => {
-            console.log(res)
+            alert('密码修改成功')
           })
           .catch((error) => {
             console.log(error)

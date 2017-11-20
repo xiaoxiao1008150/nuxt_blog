@@ -39,7 +39,6 @@ router.post('/user/logout', (req, res) => {
 // 查找用户
 router.get('/user/:id', function(req, res, next){
   let id = req.params.id;
-  // console.log('name===', name)
   User.findOne({_id:id}, function(err, user){
     if(err){
       res.json({
@@ -60,7 +59,6 @@ router.get('/user/:id', function(req, res, next){
 // 后台账户密码修改
 router.post('/user/update-password', function(req, res, next){
   let {oldp, newp} = req.body;
-  console.log('rrrr===', req.body)
   let name = 'admin'
   User.findOne({name: name}, function(err, user){
     if(err){

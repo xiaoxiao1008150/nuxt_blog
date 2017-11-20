@@ -47,10 +47,8 @@
         let params = {
           name: this.name
         }
-        // axios.post('/api/add-category', params)
         _addCategory(params)
           .then((res) => {
-            // console.log('hh===', res)
             if (res.status === 1) {
               this.showAlert = true
               this.message = res.msg
@@ -60,7 +58,6 @@
             }
           })
           .catch((error) => {
-            // console.log('error==', error)
             this.showAlert = true
             this.type = 'error'
             if (error.code === 1000) {
@@ -84,7 +81,6 @@
       },
       newContent (content) {
         this.content = content
-        // console.log('test====', this.content)
       }
     },
     components: {

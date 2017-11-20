@@ -5,6 +5,7 @@
       <admin-bar></admin-bar>
     </div>
     <div class="p_right">
+      <p v-if="$store.state.authUser">欢迎{{ $store.state.authUser.username}}! </p>
       <table class="p_table">
         <thead>
           <tr class="p_th p_tr">
@@ -191,7 +192,6 @@
         this.zdown = !icon
       } else if (field === 'meta.ips') {
         this.Ldown = !icon
-        // console.log('看看', this.Ldown)
       }
     },
     watch: {

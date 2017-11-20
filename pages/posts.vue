@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="c_right">
-    <widget></widget>
+    <side></side>
   </div>
 </div>
 </template>

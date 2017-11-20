@@ -18,7 +18,7 @@
     <comment @register="showRegister" :user="user" :post="post" :comments="comments"></comment>
   </div>
   <div class="c_right">
-    <widget :postList="posts"></widget>
+    <side :postList="posts"></side>
   </div>
   <div id="mock_register" v-show="this.showR">  
     <form class="login" id="user_form"  @submit.prevent="register($event)">
@@ -83,7 +83,6 @@ export default {
       _addUser(params)
         .then((res) => {
           this.user = res.user
-          console.log('user==', this.user)
           localStorage.setItem('blog_id', res.user._id)
           this.showR = false
         })
@@ -95,13 +94,11 @@ export default {
       this.showR = true
     },
     initPost () {
-      // console.log('testllll~~~~~', 'zz')
       let id = this.$nuxt.$route.params.detail
       _postDetailById(id)
         .then((res) => {
           this.post = res.post
           this.ips = res.post.meta.ips
-          // console.log('hh===', res.post)
           this.help = res.post.meta.votes
           this.votes = this.help
         })
@@ -113,7 +110,6 @@ export default {
       let id = this.$nuxt.$route.params.detail
       _getComment(id)
         .then((res) => {
-          // res.comments 是一个数组
           this.comments = res.comments
         })
         .catch((error) => {
@@ -128,7 +124,7 @@ export default {
           }
         })
         .catch((e) => {
-          console.log('kk')
+          console.log(e)
         })
     },
     vote () {
@@ -147,9 +143,7 @@ export default {
         })
     }
   },
-  // 注意，此处不能是created,因为created 会渲染两次，使得浏览次数增加2次
   mounted () {
-    // console.log('mounted======~~~~~~~')
     this.initPost()
     this._getPostList()
     this.initComment()
@@ -164,7 +158,6 @@ export default {
           console.log(error)
         })
     }
-    // console.log('hh===', this.$nuxt.$route.params.detail)
   },
   components: {
     Side,

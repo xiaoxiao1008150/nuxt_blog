@@ -147,7 +147,7 @@ var MongoStore = __webpack_require__(8)(__WEBPACK_IMPORTED_MODULE_3_express_sess
 // const mongoose = require('mongoose')
 
 
-var env = "production" || 'development';
+var env = "development" || 'development';
 
 var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 var host = process.env.HOST || '0.0.0.0';
@@ -169,6 +169,9 @@ db.connection.on("open", function () {
 });
 
 app.set('host', '47.104.98.140');
+if (env === "development") {
+  app.set('host', '127.0.0.1');
+}
 app.set('port', port);
 
 app.use(__WEBPACK_IMPORTED_MODULE_2_body_parser___default.a.json());
@@ -189,7 +192,7 @@ app.use('/api', __WEBPACK_IMPORTED_MODULE_5__api__["a" /* default */]);
 
 // Import and Set Nuxt.js options
 var config = __webpack_require__(17);
-config.dev = !("production" === 'production');
+config.dev = !("development" === 'production');
 
 // Init Nuxt.js
 var nuxt = new __WEBPACK_IMPORTED_MODULE_1_nuxt__["Nuxt"](config);
@@ -291,11 +294,6 @@ router.get('/posts', function (req, res, next) {
   if (req.query.category) {
     conditions.category = req.query.category.trim();
   }
-  // // 点赞
-  // if (req.query.votes) {
-  //     conditions.meta.votes = req.query.category.trim();
-  // }
-  // 分页条件
   var page = +req.query.page || 0;
   var pageSize = +req.query.pageSize;
   var skip = 0;
@@ -304,18 +302,6 @@ router.get('/posts', function (req, res, next) {
   }
   // 年份归档
   var year = req.query.year;
-  // if (year) {
-  //   conditions.year = +(req.query.year.trim());
-  // }
-
-  // 关键词搜索现在要搜索框合适，项目现在没有
-  // if (req.query.tag) {
-  //     conditions.tag = new RegExp(req.query.keyword.trim(), 'i');
-  //     // conditions.content = new RegExp(req.query.keyword.trim(), 'i');
-  // }
-  // PersonModel.find({ favouriteFoods: "sushi" }, ...);
-  // console.log('tag==', req.query.tag)
-  // let productModel = Good.find(params).skip(skip).limit(pageSize);
 
   Post.find(conditions).sort(sortObj).populate('category')
   // .skip(skip).limit(pageSize)
@@ -326,7 +312,6 @@ router.get('/posts', function (req, res, next) {
         msg: err.message
       });
     } else {
-      // console.log('posts===', posts.length)
       if (page && pageSize) {
         var results = posts.slice(skip, skip + pageSize);
         res.json({
@@ -339,8 +324,6 @@ router.get('/posts', function (req, res, next) {
         // 处理找到的posts
         var obj = {};
         posts.forEach(function (item) {
-          // console.log('type==', typeof (item.year+''))
-          // console.log('includes==', Object.keys(obj).includes(item.year+''))
           var tep = item.year + "";
           if (Object.keys(obj).includes(tep)) {
             obj[item.year].push(item);
@@ -444,7 +427,6 @@ router.get('/posts/detail_id/:id', function (req, res, next) {
   Post.findOneAndUpdate({ "_id": id }, { $inc: { 'meta.ips': 1
     } }).populate('category').exec(function (err, hasPost) {
     if (err) {
-      // console.log(err);
       res.status(500).send(err);
     } else {
       res.json({
@@ -498,7 +480,6 @@ router.post('/add-post', function (req, res, next) {
             "category": doc._id
           } }).exec(function (err, hasPost) {
           if (err) {
-            // console.log(err);
             res.status(500).send(err);
           } else {
             res.json({
@@ -525,7 +506,6 @@ router.post('/add-post', function (req, res, next) {
           created: new Date()
         });
         newPost.save(function (err1, post) {
-          // console.log('test==', post);
           // 注意，当Scheme字段定义必填的时候，如果前台没有填写完成，也会返回错误，但是整体请求是成功的
           // 此处的err不是指的是前端请求的成功与否，而是指的是数据库操作的相关错误
           if (err1) {
@@ -552,7 +532,6 @@ router.get('/add-vote/:id', function (req, res, next) {
   Post.findOneAndUpdate({ "_id": id }, { $inc: { 'meta.votes': 1
     } }).populate('category').exec(function (err, hasPost) {
     if (err) {
-      // console.log(err);
       res.status(500).send(err);
     } else {
       res.json({
@@ -673,7 +652,6 @@ router.post('/user/logout', function (req, res) {
 // 查找用户
 router.get('/user/:id', function (req, res, next) {
   var id = req.params.id;
-  // console.log('name===', name)
   User.findOne({ _id: id }, function (err, user) {
     if (err) {
       res.json({
@@ -697,7 +675,6 @@ router.post('/user/update-password', function (req, res, next) {
       oldp = _req$body.oldp,
       newp = _req$body.newp;
 
-  console.log('rrrr===', req.body);
   var name = 'admin';
   User.findOne({ name: name }, function (err, user) {
     if (err) {

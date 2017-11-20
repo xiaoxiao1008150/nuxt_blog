@@ -5,9 +5,9 @@
  </div>
  <div class="manager right">
    <a href="/posts" >文档</a>
-   <a v-if="!$store.state.authUser" href="/login">管理</a>
-   <a v-if="!$store.state.authUser" href="/admin">admin</a>
-  <a v-if="$store.state.authUser" href="">欢迎{{ $store.state.authUser.username}}! </a>
+   <a href="https://github.com/xiaoxiao1008150/nuxt_blog" target="blank">github</a>
+   <!-- <a v-if="!$store.state.authUser" href="/login">管理</a>
+   <a v-if="!$store.state.authUser" href="/admin">admin</a> -->
   <a v-if="$store.state.authUser"  @click="logout">退出</a>
  </div>
 </nav>

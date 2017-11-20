@@ -90,6 +90,10 @@ ul {
     width:800px;
     float:right;
   }
+  .p_right > p {
+    line-height:40px;
+    margin-left: 5px;
+  }
   .p_left{
     width:120px;
     float:left;

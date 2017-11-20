@@ -126,7 +126,6 @@
         this.$emit('register')
       },
       goTextarea (id, name) {
-        console.log('test')
         this.cid = id
         this.comment_name = name
         this.reply = true
@@ -140,19 +139,15 @@
           user: this.user,
           hasCommentId: cid
         }
-        // console.log('params==', params)
         _addComment(params)
           .then((res) => {
             if (cid) {
               this.replyComment = res
-              console.log('reply==', res)
               alert(`${this.user.name}回复评论成功`)
             } else {
               this.newComment = res
-              console.log('new==', res)
               alert(`${this.user.name}消息发布成功`)
             }
-            console.log('~~~~~~')
             // this.loading = true
             this.comment_text = ''
             // this.showComment = true

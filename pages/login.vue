@@ -40,7 +40,6 @@ export default {
           this.formUsername = ''
           this.formPassword = ''
         }
-        // console.log('test===', this.$store.state.authUser.username)
       } catch (e) {
         console.log(e)
       }

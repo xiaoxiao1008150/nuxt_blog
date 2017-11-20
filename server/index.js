@@ -28,6 +28,9 @@ db.connection.on("open", function() {
 });
 
 app.set('host', '47.104.98.140');
+if (env === "development") {
+  app.set('host', '127.0.0.1');
+}
 app.set('port', port)
 
 app.use(bodyParser.json());

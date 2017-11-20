@@ -23,11 +23,6 @@ router.get('/posts', function(req, res, next){
     if (req.query.category) {
         conditions.category = req.query.category.trim();
     }
-    // // 点赞
-    // if (req.query.votes) {
-    //     conditions.meta.votes = req.query.category.trim();
-    // }
-    // 分页条件
     let page = +req.query.page || 0;
     let pageSize = +req.query.pageSize;
     let skip = 0
@@ -36,18 +31,6 @@ router.get('/posts', function(req, res, next){
     }
     // 年份归档
     let year = req.query.year
-    // if (year) {
-    //   conditions.year = +(req.query.year.trim());
-    // }
-
-    // 关键词搜索现在要搜索框合适，项目现在没有
-    // if (req.query.tag) {
-    //     conditions.tag = new RegExp(req.query.keyword.trim(), 'i');
-    //     // conditions.content = new RegExp(req.query.keyword.trim(), 'i');
-    // }
-    // PersonModel.find({ favouriteFoods: "sushi" }, ...);
-    // console.log('tag==', req.query.tag)
-        // let productModel = Good.find(params).skip(skip).limit(pageSize);
 
     Post.find(conditions)
             .sort(sortObj)
@@ -60,7 +43,6 @@ router.get('/posts', function(req, res, next){
                   msg: err.message
                 });
               }else{
-                // console.log('posts===', posts.length)
                 if (page && pageSize) {
                   let results = posts.slice(skip, skip + pageSize);
                   res.json({
@@ -73,8 +55,6 @@ router.get('/posts', function(req, res, next){
                   // 处理找到的posts
                   let obj = {};
                   posts.forEach((item) => {
-                      // console.log('type==', typeof (item.year+''))
-                      // console.log('includes==', Object.keys(obj).includes(item.year+''))
                     let tep = item.year + "";
                     if (Object.keys(obj).includes(tep)){
                       obj[item.year].push(item);
@@ -188,7 +168,6 @@ router.get('/posts/detail_id/:id', function(req, res, next){
             .populate('category')
             .exec(function(err, hasPost){
            if(err) {
-               // console.log(err);
                res.status(500).send(err);
            } else {
               res.json({
@@ -242,7 +221,6 @@ router.post('/add-post', function(req, res, next){
             "category": doc._id,
           }}).exec(function(err, hasPost){
            if(err) {
-               // console.log(err);
                res.status(500).send(err);
            } else {
               res.json({
@@ -269,7 +247,6 @@ router.post('/add-post', function(req, res, next){
           created: new Date()
         });
         newPost.save(function (err1, post) {
-          // console.log('test==', post);
           // 注意，当Scheme字段定义必填的时候，如果前台没有填写完成，也会返回错误，但是整体请求是成功的
           // 此处的err不是指的是前端请求的成功与否，而是指的是数据库操作的相关错误
           if (err1) {
@@ -300,7 +277,6 @@ router.get('/add-vote/:id', function(req, res, next){
             .populate('category')
             .exec(function(err, hasPost){
            if(err) {
-               // console.log(err);
                res.status(500).send(err);
            } else {
               res.json({

@@ -3,15 +3,15 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-const _31c76804 = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
-const _02270478 = () => import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */).then(m => m.default || m)
-const _0921e9ca = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
-const _4b515af6 = () => import('../pages/posts.vue' /* webpackChunkName: "pages/posts" */).then(m => m.default || m)
-const _20f693b1 = () => import('../pages/admin/addCategory.vue' /* webpackChunkName: "pages/admin/addCategory" */).then(m => m.default || m)
-const _509cd85a = () => import('../pages/admin/addPost.vue' /* webpackChunkName: "pages/admin/addPost" */).then(m => m.default || m)
-const _b9d12272 = () => import('../pages/admin/update.vue' /* webpackChunkName: "pages/admin/update" */).then(m => m.default || m)
-const _5cd7e6ee = () => import('../pages/tag/_tag.vue' /* webpackChunkName: "pages/tag/_tag" */).then(m => m.default || m)
-const _1bedae3f = () => import('../pages/post/_detail.vue' /* webpackChunkName: "pages/post/_detail" */).then(m => m.default || m)
+const _5eaefecd = () => import('../pages/index.vue' /* webpackChunkName: "pages/index" */).then(m => m.default || m)
+const _121019cd = () => import('../pages/admin/index.vue' /* webpackChunkName: "pages/admin/index" */).then(m => m.default || m)
+const _2856a1e4 = () => import('../pages/login.vue' /* webpackChunkName: "pages/login" */).then(m => m.default || m)
+const _073ee94e = () => import('../pages/posts.vue' /* webpackChunkName: "pages/posts" */).then(m => m.default || m)
+const _360d44fa = () => import('../pages/admin/addCategory.vue' /* webpackChunkName: "pages/admin/addCategory" */).then(m => m.default || m)
+const _9f435cc8 = () => import('../pages/admin/addPost.vue' /* webpackChunkName: "pages/admin/addPost" */).then(m => m.default || m)
+const _17315844 = () => import('../pages/admin/update.vue' /* webpackChunkName: "pages/admin/update" */).then(m => m.default || m)
+const _11c820f6 = () => import('../pages/tag/_tag.vue' /* webpackChunkName: "pages/tag/_tag" */).then(m => m.default || m)
+const _6d3d9356 = () => import('../pages/post/_detail.vue' /* webpackChunkName: "pages/post/_detail" */).then(m => m.default || m)
 
 
 
@@ -49,47 +49,47 @@ export function createRouter () {
     routes: [
 		{
 			path: "/",
-			component: _31c76804,
+			component: _5eaefecd,
 			name: "index"
 		},
 		{
 			path: "/admin",
-			component: _02270478,
+			component: _121019cd,
 			name: "admin"
 		},
 		{
 			path: "/login",
-			component: _0921e9ca,
+			component: _2856a1e4,
 			name: "login"
 		},
 		{
 			path: "/posts",
-			component: _4b515af6,
+			component: _073ee94e,
 			name: "posts"
 		},
 		{
 			path: "/admin/addCategory",
-			component: _20f693b1,
+			component: _360d44fa,
 			name: "admin-addCategory"
 		},
 		{
 			path: "/admin/addPost",
-			component: _509cd85a,
+			component: _9f435cc8,
 			name: "admin-addPost"
 		},
 		{
 			path: "/admin/update",
-			component: _b9d12272,
+			component: _17315844,
 			name: "admin-update"
 		},
 		{
 			path: "/tag/:tag?",
-			component: _5cd7e6ee,
+			component: _11c820f6,
 			name: "tag-tag"
 		},
 		{
 			path: "/post/:detail?",
-			component: _1bedae3f,
+			component: _6d3d9356,
 			name: "post-detail"
 		}
     ],

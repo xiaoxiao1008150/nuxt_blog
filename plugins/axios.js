@@ -1,9 +1,10 @@
 import * as axios from 'axios'
 
+let env = process.env.NODE_ENV || 'development'
 let options = {}
 // The server-side needs a full url to works
-if (process.server) {
-  options.baseURL = 'http://47.104.98.140:3000'
+if (env === 'development') {
+  options.baseURL = 'http://localhost:3000'
 }else{
   options = {
     baseURL: 'http://47.104.98.140:3000',
@@ -48,7 +49,7 @@ instance.interceptors.response.use(function (response) {
       //官方解释: 请求的设置问题引发的错误 
       // 亲自试验: 数据库没连接 ‘timeout of 5000ms exceeded’,一般是请求超时
       // console.log('Error===', error.message);
-    // console.log(error.config);
+      // console.log(error.config);
 });
 
 export default instance

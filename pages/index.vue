@@ -24,10 +24,10 @@
             </div>
           </footer>
         </article>
-        <pagination :totalPage="totalPage" @pageChange="handleCurrentChange" :page="page" :pageSize="pageSize"></pagination>
+        <pagination v-if="len" :totalPage="totalPage" @pageChange="handleCurrentChange" :page="page" :pageSize="pageSize"></pagination>
       </div>
       <div class="c_right">
-        <widget :postList="posts"></widget>
+        <side :postList="posts"></side>
       </div>
     </div>
   </div>
@@ -38,6 +38,7 @@
 import { _getAllPosts } from '~/util/post'
 import Pagination from '~/components/Pagination'
 import Side from '~/components/Side'
+// import Footer from '~/components/Footer'
 export default {
   data () {
     return {
@@ -45,7 +46,8 @@ export default {
       pageSize: 3,
       page: 1,
       totalPage: 0,
-      pass: true
+      pass: true,
+      len: 0
     }
   },
   head () {
@@ -55,9 +57,7 @@ export default {
   },
   methods: {
     handleCurrentChange (val) {
-      // console.log('this.page==,qian', this.page)
       this.page = val
-      // this.$nuxt.$router.replace({query: {page: this.page}}) // 其中val是当前的页数。
       this.$nuxt.$router.push({path: this.$nuxt.$route.path, query: { page: this.page }})
     },
     getPostList () {
@@ -72,11 +72,12 @@ export default {
         .then((res) => {
           if (res.status === 1) {
             this.posts = res.posts
+            this.len = this.posts && this.posts.length
             this.totalPage = res.totalPage
           }
         })
         .catch((e) => {
-          // console.log('kk')
+          console.log(e)
         })
     }
   },
@@ -86,7 +87,6 @@ export default {
   },
   created () {
     this.getPostList()
-    // console.log('test==', this.$nuxt.$route.params.tag)
   },
   components: {
     Pagination,
