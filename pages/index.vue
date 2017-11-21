@@ -38,7 +38,6 @@
 import { _getAllPosts } from '~/util/post'
 import Pagination from '~/components/Pagination'
 import Side from '~/components/Side'
-// import Footer from '~/components/Footer'
 export default {
   data () {
     return {
@@ -52,7 +51,7 @@ export default {
   },
   head () {
     return {
-      title: 'Users'
+      title: '文章'
     }
   },
   methods: {

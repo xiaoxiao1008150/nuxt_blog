@@ -21,6 +21,11 @@ export default {
       return redirect('/admin')
     }
   },
+  head () {
+    return {
+      title: '登录'
+    }
+  },
   data () {
     return {
       formUsername: '',
