@@ -4,7 +4,7 @@
         <div class="co_list" v-for="comment in comments">
           <div class="co_field clearfix">
               <div class="cl_img left">
-                <img src="~assets/img/default.png">
+                <img src="~assets/img/default.jpeg">
               </div>
               <div class="cl_text">
                 <div class="co_name">{{comment.from.name}}</div>
@@ -29,7 +29,7 @@
                   <div class="reply_list" id="reply" v-if="replyComment.reply && cid===comment._id">
                     <div class="co_field clearfix">
                       <div class="cl_img left">
-                        <img src="~assets/img/default.png">
+                        <img src="~assets/img/default.jpeg">
                       </div>
                       <div class="cl_text">
                         <div class="co_name">{{replyComment.reply_text.to}}回复{{replyComment.reply_text.from}}</div>
@@ -46,7 +46,7 @@
     <div class="co_list" id="new" v-if="newComment.start">
       <div class="co_field clearfix">
         <div class="cl_img left">
-          <img src="~assets/img/default.png">
+          <img src="~assets/img/default.jpeg">
         </div>
         <div class="cl_text">
           <div class="co_name">{{newComment.from}}</div>
@@ -54,20 +54,9 @@
         </div>
       </div>
     </div>
-  <!--   <div class="co_list" id="reply" v-if="replyComment.reply">
-      <div class="co_field clearfix">
-        <div class="cl_img left">
-          <img src="~assets/img/default.png">
-        </div>
-        <div class="cl_text">
-          <div class="co_name">{{replyComment.reply_text.to}}回复{{replyComment.reply_text.from}}</div>
-          <div class="co_detail">{{ replyComment.reply_text.content }}</div>
-        </div>
-      </div>
-    </div> -->
     <div class="co_textarea">
         <div class="cl_img left">
-          <img src="~assets/img/default.png">
+          <img src="~assets/img/default.jpeg">
         </div>
         <div class="cl_text">
           <button v-show="!userLength" @click="register" class="submit_button" id="register_button">请注册评论</button>
