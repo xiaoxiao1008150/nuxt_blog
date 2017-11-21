@@ -23,15 +23,8 @@ npm run dev
 打开浏览器进入localhost:3000,查看效果
 
 ## 部分效果演示
-### 静态页面
-
-![image](https://github.com/xiaoxiao1008150/nuxt_blog/raw/master/screenshot/index.png)
-![image](https://github.com/xiaoxiao1008150/nuxt_blog/raw/master/screenshot/detail.png)
-
-### 城市搜索和相关影人、电影搜索
-
-![image](https://github.com/xiaoxiao1008150/vue_movie/raw/master/screenshot/search_city.gif)
-![image](https://github.com/xiaoxiao1008150/vue_movie/raw/master/screenshot/search_people.gif)
+![image](https://github.com/xiaoxiao1008150/vue_movie/raw/master/screenshot/index.gif)
+![image](https://github.com/xiaoxiao1008150/vue_movie/raw/master/screenshot/admin.gif)
 
 ## 项目描述
 ### 技术栈
