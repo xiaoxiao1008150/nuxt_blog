@@ -13,7 +13,7 @@ git clone git@github.com:xiaoxiao1008150/nuxt_blog.git
 安装依赖
 ```
 cd nuxt_blog
-npm install/yarn
+npm install/yarn install
 ```
 运行
 

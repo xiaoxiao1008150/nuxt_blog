@@ -17,7 +17,7 @@
                         :key="index">
                         <div class="co_field clearfix">
                           <div class="cl_img left">
-                            <img src="~assets/img/default.png">
+                            <img src="~assets/img/default.jpeg">
                           </div>
                           <div class="cl_text">
                             <div class="co_name">{{reply.to.name}}回复{{comment.from.name}}</div>
