@@ -9,12 +9,14 @@
 clone项目源码
 ```
 git clone git@github.com:xiaoxiao1008150/nuxt_blog.git
+```
 安装依赖
 ```
 cd nuxt_blog
 npm install/yarn
 ```
 运行
+
 ```
 npm run dev
 ```
@@ -23,7 +25,7 @@ npm run dev
 ## 部分效果演示
 ### 静态页面
 
-![image](https://github.com/xiaoxiao1008150/vue_movie/raw/master/screenshot/index.gif)
+![image](https://github.com/xiaoxiao1008150/nuxt_blog/raw/master/screenshot/index.png)
 ![image](https://github.com/xiaoxiao1008150/nuxt_blog/raw/master/screenshot/detail.png)
 
 ### 城市搜索和相关影人、电影搜索
