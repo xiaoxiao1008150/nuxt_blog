@@ -1,4 +1,4 @@
-# nuxt + express PC端博客
+# nuxt + express pc端博客
 
 #### PC访问
 
@@ -23,8 +23,8 @@ npm run dev
 打开浏览器进入localhost:3000,查看效果
 
 ## 部分效果演示
-![image](https://github.com/xiaoxiao1008150/vue_movie/raw/master/screenshot/index.gif)
-![image](https://github.com/xiaoxiao1008150/vue_movie/raw/master/screenshot/admin.gif)
+![image](https://github.com/xiaoxiao1008150/nuxt_blog/raw/master/screenshot/index.gif)
+![image](https://github.com/xiaoxiao1008150/nuxt_blog/raw/master/screenshot/admin.gif)
 
 ## 项目描述
 ### 技术栈
